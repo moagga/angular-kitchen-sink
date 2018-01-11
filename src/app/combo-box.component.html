@@ -1,0 +1,21 @@
+<div>
+    <p *ngIf="anyOptionSelected()">
+        {{numberOfOptionsSelected()}} selected
+    </p>
+    <div>
+        <label>
+            <input #selectAll type="checkbox" 
+            [checked]="isAllChecked()" (change)="checkAll($event)" >Corporate Action Status
+        </label>
+    </div>
+    <div>
+        <input #filter (keyup)="onKeyUp(filter.value)">
+    </div>
+    <div>
+        <div *ngFor="let option of displayedOptions | async" >
+            <label *ngIf="!option.hidden">
+                <input type="checkbox" value="{{option.code}}" [(ngModel)]="option.state" />
+                {{option.description}}
+            </label>
+    </div>
+</div>

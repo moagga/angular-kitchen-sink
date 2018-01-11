@@ -1,0 +1,12 @@
+<form [formGroup]="myForm" (ngSubmit)="submit()">
+    <button type="button" class="btn btn-link" (click)="addItem()">Add another item</button>
+    <fieldset formArrayName="items">
+      <additional-param
+        *ngFor="let item of myForm.get('items').controls; let i=index"
+        [index]="i"
+        [item]="item"
+        (removed)="myForm.get('items').removeAt($event)">
+      </additional-param>
+    </fieldset>
+    <button type="button" class="btn btn-link" (click)="onSubmit()">Submit</button>
+</form>

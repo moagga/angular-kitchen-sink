@@ -1,0 +1,15 @@
+<div class="paginator">
+
+    <pager
+        [totalItems]="pagingInfo.totalCount"
+        [(ngModel)]="pagingInfo.page"
+        (pageChanged)="pageChanged($event)"
+        pageBtnClass="btn"
+        [itemsPerPage]="pagingInfo.pageSize"
+        class="pull-left"
+        previousText=""
+        nextText=""
+    >
+    </pager>
+
+</div>

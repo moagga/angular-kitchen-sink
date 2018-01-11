@@ -1,0 +1,28 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+</div>
+<div>
+  <div class="child" *ngFor="let m of items">
+    <child-component [item]="m"></child-component>
+  </div>
+</div>
+
+<!--
+<div>
+  <h3>Multi Select</h3>
+  <multi-select></multi-select>
+</div>
+<div>
+  <h3>Nested Forms</h3>
+  <si-form></si-form>
+</div>
+-->
+
+<div>
+  <h3>Pagination Widget</h3>
+  <paginator [pagingInfo]="pagingInfo" (onPageChange)="onPageChanged($event)"></paginator>
+  <button (click)="goToPage()">Go to Page 3</button>
+</div>

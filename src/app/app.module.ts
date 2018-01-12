@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Injectable } from '@angular/core';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { ChildComponent } from './child.component';
@@ -9,6 +10,7 @@ import { SettlementInstructionsFormComponent } from './settlement-instructions/s
 import { AdditionalParamComponent } from './settlement-instructions/additional-param.component';
 import { OptionComponent } from './option.component';
 import { PaginationModule, PaginationConfig } from 'ngx-bootstrap/pagination';
+import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 import { PaginationComponent } from './pagination.component';
 
 @Injectable()
@@ -35,8 +37,10 @@ export class AppPaginationConfig {
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     ReactiveFormsModule,
-    PaginationModule
+    PaginationModule,
+    TypeaheadModule.forRoot()
   ],
   providers: [
     {

@@ -1,0 +1,7 @@
+<ng-container>
+    <input [(ngModel)]="valueDescription"
+       [typeahead]="options"
+       typeaheadOptionField="description"
+       (typeaheadOnSelect)="onSelect($event)"
+       class="form-control">
+</ng-container>

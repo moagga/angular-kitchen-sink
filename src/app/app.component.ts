@@ -1,5 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, TemplateRef } from '@angular/core';
 import { PagingInfo } from './pagination.component';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/interval';
+import { HttpClient } from '@angular/common/http';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-root',
@@ -8,32 +12,17 @@ import { PagingInfo } from './pagination.component';
 })
 export class AppComponent {
 
-  items:any[];
-  pagingInfo: PagingInfo;
+  title: string;
 
+  constructor(private http: HttpClient, private modalService: BsModalService){}
+  
   ngOnInit(){
-    this.items = [
-      {name: 'Mohit', age: 35},
-      {name: 'Anu', age: 34}
-    ];
-
-    this.pagingInfo = PagingInfo.create(10, 2);
-
+    let url = 'http://localhost:3000/';
+    this.http.get(url).subscribe((resp: any) => {
+      console.log(resp);
+      this.title = resp.items[0];
+    });
   }
 
-  onChange($event){
-    console.log($event);
-  }
-
-  onPageChanged(event: any){
-    console.log(event.page);
-    console.log(event.itemsPerPage);
-  }
-
-  goToPage(){
-    let pi: PagingInfo = PagingInfo.create(10,2);
-    pi.page = 3;
-    this.pagingInfo = pi;
-  }
 
 }

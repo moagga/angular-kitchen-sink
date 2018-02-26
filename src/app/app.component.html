@@ -4,25 +4,15 @@
     Welcome to {{ title }}!
   </h1>
 </div>
-<div>
-  <div class="child" *ngFor="let m of items">
-    <child-component [item]="m"></child-component>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Modal</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
   </div>
-</div>
-
-<!--
-<div>
-  <h3>Multi Select</h3>
-  <multi-select></multi-select>
-</div>
-<div>
-  <h3>Nested Forms</h3>
-  <si-form></si-form>
-</div>
--->
-
-<div>
-  <h3>Pagination Widget</h3>
-  <paginator [pagingInfo]="pagingInfo" (onPageChange)="onPageChanged($event)"></paginator>
-  <button (click)="goToPage()">Go to Page 3</button>
-</div>
+  <div class="modal-body">
+    This is a modal.
+  </div>
+</ng-template>

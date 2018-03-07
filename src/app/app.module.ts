@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Injectable } from '@angular/core';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
-
+import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { ChildComponent } from './child.component';
 import { MultiSelectComboBox  } from './combo-box.component';
@@ -14,6 +14,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 import { PaginationComponent } from './pagination.component';
 import { ResponseInterceptor } from './response.interceptor';
+import { LoginComponent } from './login.component';
 
 export const httpInterceptorProviders = [
   { provide: HTTP_INTERCEPTORS, useClass: ResponseInterceptor, multi: true }
@@ -30,9 +31,25 @@ export class AppPaginationConfig {
   };
 }
 
+const appRoutes: Routes = [
+  {
+    path: 'app',
+    component: AppComponent,
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  { path: '',
+    redirectTo: '/app',
+    pathMatch: 'full'
+  },
+];
+
 @NgModule({
   declarations: [
     AppComponent,
+    LoginComponent,
     ChildComponent,
     MultiSelectComboBox,
     SettlementInstructionsFormComponent,
@@ -45,6 +62,7 @@ export class AppPaginationConfig {
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    RouterModule.forRoot(appRoutes),
     PaginationModule,
     TypeaheadModule.forRoot(),
     ModalModule.forRoot()
